@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Lv = findViewById(R.id.lv);
 
 //        String API_BASE_URL = "https://api.github.com/";
-        String API_BASE_URL = "http://10.16.33.79:3000";
+        String API_BASE_URL = "http://10.16.33.68:3000";
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
