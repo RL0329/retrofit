@@ -23,7 +23,7 @@ public class addUser extends AppCompatActivity {
 
         final EditText uNameEt = findViewById(R.id.uNameEt);
         final EditText pWordEt = findViewById(R.id.pWordEt);
-        Button addBtn = findViewById(R.id.addUserBtn);
+        final Button addBtn = findViewById(R.id.addUserBtn);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,8 +34,17 @@ public class addUser extends AppCompatActivity {
                         pWordEt.getText().toString()
                 );
 
-                sendNetwordRequest(newuser);
-                finish();
+
+                if(uNameEt.getText().toString().isEmpty()){
+                    Toast.makeText(addUser.this,"please enter a username.",Toast.LENGTH_SHORT).show();
+                }
+                else if (pWordEt.getText().toString().isEmpty()){
+                    Toast.makeText(addUser.this,"please enter a password.",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    sendNetwordRequest(newuser);
+                    finish();
+                }
 
             }
         });
