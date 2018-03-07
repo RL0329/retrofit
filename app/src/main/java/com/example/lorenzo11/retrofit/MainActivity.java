@@ -1,9 +1,12 @@
 package com.example.lorenzo11.retrofit;
 
+import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -18,6 +21,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private ListView Lv;
+    private Button nextPageBtn;
+    private SwipeRefreshLayout swipeRefreshLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,20 +31,44 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Lv = findViewById(R.id.lv);
+        nextPageBtn = findViewById(R.id.nextBtn);
+        swipeRefreshLayout = findViewById(R.id.swipeLayout);
 
-//        String API_BASE_URL = "https://api.github.com/";
-        String API_BASE_URL = "http://192.168.11.46:3000";
+        nextPageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i =new Intent(MainActivity.this,addUser.class);
+                startActivity(i);
+
+            }
+        });
+
+//        loadData();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadData();
+                swipeRefreshLayout.setRefreshing(false);
+
+            }
+        });
+
+
+    }
+
+    private void loadData(){
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
         Retrofit.Builder builder = new Retrofit.Builder()
-                        .baseUrl(API_BASE_URL)
-                        .addConverterFactory(GsonConverterFactory.create());
+                .baseUrl("http://10.20.110.30:3000")
+                .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.client(httpClient.build()).build();
 
-        gtiHubClient client =  retrofit.create(gtiHubClient.class);
-//        Call<List<GitHubRepo>> call = client.reposForUser("fs-opensource");
+        gitHubClient client =  retrofit.create(gitHubClient.class);
         Call<List<GitHubRepo>> call = client.reposForUser("posts");
 
         call.enqueue(new Callback<List<GitHubRepo>>() {
@@ -58,5 +88,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"error",Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }

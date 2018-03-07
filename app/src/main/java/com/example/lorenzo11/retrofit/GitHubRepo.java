@@ -5,26 +5,27 @@ package com.example.lorenzo11.retrofit;
  */
 
 public class GitHubRepo {
-    private int id;
-//    private String name;
-    private String title;
-    private String author;
-    public GitHubRepo() {
+
+    private String id;
+    private String username;
+    private String password;
+
+    public GitHubRepo(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
-    public int getId() {
+
+    public String getId() {
         return id;
     }
 
-//    public String getName() {
-//        return name;
-//    }
 
-    public String getTitle() {
-        return title;
+    public String getUname() {
+        return username;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getPword() {
+        return password;
     }
 }
