@@ -14,11 +14,6 @@ import retrofit2.http.Path;
 
 public interface gitHubClient {
 
-//    @GET("/users/{user}/repos")
-//     Call<List<GitHubRepo>> reposForUser(
-//            @Path("user") String user
-//    );
-
     @GET("/{user}")
     Call<List<GitHubRepo>> reposForUser(
             @Path("user") String user
