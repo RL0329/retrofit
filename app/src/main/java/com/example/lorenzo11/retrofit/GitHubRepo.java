@@ -6,8 +6,9 @@ package com.example.lorenzo11.retrofit;
 
 public class GitHubRepo {
     private int id;
-    private String name;
-
+//    private String name;
+    private String title;
+    private String author;
     public GitHubRepo() {
     }
 
@@ -15,7 +16,15 @@ public class GitHubRepo {
         return id;
     }
 
-    public String getName() {
-        return name;
+//    public String getName() {
+//        return name;
+//    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 }

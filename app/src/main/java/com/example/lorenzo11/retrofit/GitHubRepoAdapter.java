@@ -31,10 +31,13 @@ public class GitHubRepoAdapter extends ArrayAdapter<GitHubRepo> {
         }
 
         TextView textView = row.findViewById(R.id.list_item_pagination_text);
+        TextView textView2 = row.findViewById(R.id.list_item_pagination_id);
 
         GitHubRepo item = values.get(position);
-        String message = item.getName();
+        String author=item.getAuthor();
+        String message = item.getTitle();
         textView.setText(message);
+        textView2.setText(author);
 
         return row;
     }
