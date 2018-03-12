@@ -7,7 +7,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import java.util.List;
 
-
 public class GitHubRepoAdapter extends ArrayAdapter<GitHubRepo> {
 
     private Context context;
@@ -30,14 +29,24 @@ public class GitHubRepoAdapter extends ArrayAdapter<GitHubRepo> {
             row = inflater.inflate(R.layout.list_item_pagination, parent, false);
         }
 
-        TextView textView = row.findViewById(R.id.list_item_pagination_text);
-        TextView textView2 = row.findViewById(R.id.list_item_pagination_id);
+        TextView emailTv = row.findViewById(R.id.eMailTv);
+        TextView unameTv = row.findViewById(R.id.uNameTv);
+        TextView pwordTv = row.findViewById(R.id.pWordTv);
+        TextView fnameTv = row.findViewById(R.id.fNameTv);
+        TextView lnameTv = row.findViewById(R.id.lNameTv);
 
         GitHubRepo item = values.get(position);
-        String Uname=item.getUname();
-        String Pword = item.getPword();
-        textView.setText(Uname);
-        textView2.setText(Pword);
+
+        String Email=item.getEmail();
+        String Uname=item.getUsername();
+        String Pword = item.getPassword();
+        String Fname = item.getFirstname();
+        String Lname = item.getLastname();
+        emailTv.setText(Email);
+        unameTv.setText(Uname);
+        pwordTv.setText(Pword);
+        fnameTv.setText(Fname);
+        lnameTv.setText(Lname);
 
         return row;
     }

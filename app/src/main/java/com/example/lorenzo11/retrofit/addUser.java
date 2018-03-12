@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,8 +20,11 @@ public class addUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
 
+        final EditText eMailEt = findViewById(R.id.eMialEt);
         final EditText uNameEt = findViewById(R.id.uNameEt);
         final EditText pWordEt = findViewById(R.id.pWordEt);
+        final EditText fNameEt = findViewById(R.id.fNameEt);
+        final EditText lNameEt = findViewById(R.id.lNameEt);
         final Button addBtn = findViewById(R.id.addUserBtn);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -30,10 +32,13 @@ public class addUser extends AppCompatActivity {
             public void onClick(View v) {
 
                 GitHubRepo newuser = new GitHubRepo(
-                        uNameEt.getText().toString(),
-                        pWordEt.getText().toString()
-                );
 
+                        eMailEt.getText().toString(),
+                        uNameEt.getText().toString(),
+                        pWordEt.getText().toString(),
+                        fNameEt.getText().toString(),
+                        lNameEt.getText().toString()
+                );
 
                 if(uNameEt.getText().toString().isEmpty()){
                     Toast.makeText(addUser.this,"please enter a username.",Toast.LENGTH_SHORT).show();
@@ -45,7 +50,6 @@ public class addUser extends AppCompatActivity {
                     sendNetwordRequest(newuser);
                     finish();
                 }
-
             }
         });
     }
@@ -54,7 +58,7 @@ public class addUser extends AppCompatActivity {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
         Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl("http://10.20.110.30:3000")
+                .baseUrl("http://10.16.33.79:3000")
                 .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.client(httpClient.build()).build();
@@ -65,7 +69,7 @@ public class addUser extends AppCompatActivity {
         call.enqueue(new Callback<GitHubRepo>() {
             @Override
             public void onResponse(Call<GitHubRepo> call, Response<GitHubRepo> response) {
-                Toast.makeText(addUser.this,response.body().getId(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(addUser.this,response.body().getId(),Toast.LENGTH_SHORT).show();
             }
 
             @Override

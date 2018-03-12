@@ -9,18 +9,41 @@
 
 
     <EditText
+        android:id="@+id/eMialEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="email here"
+        android:textSize="30sp"
+        android:layout_marginBottom="20dp"/>
+
+    <EditText
         android:id="@+id/uNameEt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="username here"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:layout_marginBottom="20dp"/>
     <EditText
         android:id="@+id/pWordEt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="password here"
-        android:textSize="40sp"
+        android:textSize="30sp"
+        android:layout_marginBottom="20dp"/>
+
+    <EditText
+        android:id="@+id/fNameEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="first name here"
+        android:textSize="30sp"
+        android:layout_marginBottom="20dp"/>
+    <EditText
+        android:id="@+id/lNameEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="last name here"
+        android:textSize="30sp"
         android:layout_marginBottom="20dp"/>
     <Button
         android:id="@+id/addUserBtn"

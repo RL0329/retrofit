@@ -5,14 +5,36 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/list_item_pagination_text"
+        android:id="@+id/eMailTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@+id/label"
+        android:textSize="20sp" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/uNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@+id/label"
+        android:textSize="20sp">
+    </TextView>
+    <TextView
+        android:id="@+id/pWordTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@+id/label"
         android:textSize="20sp" >
     </TextView>
     <TextView
-        android:id="@+id/list_item_pagination_id"
+        android:id="@+id/fNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@+id/label"
+        android:textSize="20sp">
+    </TextView>
+    <TextView
+        android:id="@+id/lNameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@+id/label"
